@@ -54,7 +54,8 @@
   },
   "files":[
     "typings/index.d.ts",
-    "src/main.ts"
+    "src/main.ts",
+    "test/Person.ts"
   ],
   "exclude": [
       "node_modules/"
