@@ -1,1 +1,0 @@
-function sample(s){console.log(s)}console.log("message is 1"),console.log("message is 2"),sample("value");

@@ -39,7 +39,7 @@ gulp.task('browser-sync', function() {
     });
 });
 
-gulp.task('less-watch',['less'],function(done){
+gulp.task('less-watch',['less','copyHTML'],function(done){
     browserSync.reload();
     done();
 });
@@ -52,10 +52,13 @@ gulp.task('watch',function()
             baseDir:'dist/'
         }
     });
-    gulp.watch("*.less").on("change",browserSync.reload);
-    gulp.watch('src/less/*.less', ['less-watch']);
-    gulp.watch('src/js/*.js', ['minify']);
-    gulp.watch('src/*.html', ['copyHTML']);
+    //gulp.watch("*.less").on("change",browserSync.reload);
+    gulp.watch(['src/*.html','src/less/*.less'], ['less-watch']);
+
+
+   // gulp.watch('src/less/*.less', ['less-watch']);
+   // gulp.watch('src/js/*.js', ['minify']);
+    //gulp.watch('src/*.html', ['copyHTML']);
     //gulp.watch('src/*.html', ['html-watch']);
 
 })
