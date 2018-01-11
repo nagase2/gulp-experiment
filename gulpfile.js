@@ -1,55 +1,22 @@
-var gulp = require('gulp');
-const imagemin = require('gulp-imagemin');
-const uglify = require('gulp-uglify');
-const less = require('gulp-less');
-const livereload = require('gulp-livereload');
+var gulp = require('gulp');     
+var scssPlugin = require('gulp-less');
+var connect = require('gulp-connect');
 
-
-gulp.task('default', ()=>
-    gulp.src('src/images/*')
-    .pipe(imagemin())
-    .pipe(gulp.dest('dist/images'))
-);
-
-// copy Html
-gulp.task('copyHTML',function(){
-  gulp.src('src/*.html')
-  .pipe(gulp.dest('dist'));
-  //.pipe(gulp.livereload()))
-
+gulp.task('myStyles', function () {
+    gulp.src('less/*.less')
+        .pipe(scssPlugin())
+        .pipe(gulp.dest('css'))
+        .pipe(connect.reload());
 });
 
-
-// Minify JS
-gulp.task('minify',function(){
-  gulp.src('src/js/*.js')
-  .pipe(uglify())
-  .pipe(gulp.dest('dist/js'))
+gulp.task('connect', function() {
+    connect.server({
+        livereload: true
+    });
 });
 
-
-gulp.task('less', function() {
-gulp.src('less/*.less')
-.pipe(less())
-.pipe(gulp.dest('css'))
-.pipe(livereload());
+gulp.task('watchMyStyles', function() {
+    gulp.watch('less/*.less', ['myStyles']);
 });
 
-gulp.task('watch', function() {
-livereload.listen();
-gulp.watch('less/*.less', ['less']);
-});
-
-
-//------------------
-function defaultTask(done) {
-  // place code for your default task here
-  console.log("default task executed. ")
-  done();
-}
-
-gulp.task('message',function(){
-  return console.log('Gulp is runnning...')
-});
-
-
+gulp.task('default', ['watchMyStyles', 'connect']);
