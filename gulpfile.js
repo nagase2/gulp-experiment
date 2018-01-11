@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
 const uglify = require('gulp-uglify');
+const less = require('gulp-less');
+const livereload = require('gulp-livereload');
 
 
 gulp.task('default', ()=>
@@ -12,7 +14,9 @@ gulp.task('default', ()=>
 // copy Html
 gulp.task('copyHTML',function(){
   gulp.src('src/*.html')
-  .pipe(gulp.dest('dist'))
+  .pipe(gulp.dest('dist'));
+  //.pipe(gulp.livereload()))
+
 });
 
 
@@ -24,9 +28,17 @@ gulp.task('minify',function(){
 });
 
 
+gulp.task('less', function() {
+gulp.src('less/*.less')
+.pipe(less())
+.pipe(gulp.dest('css'))
+.pipe(livereload());
+});
 
-
-
+gulp.task('watch', function() {
+livereload.listen();
+gulp.watch('less/*.less', ['less']);
+});
 
 
 //------------------
