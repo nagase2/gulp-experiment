@@ -1,0 +1,19 @@
+.ssss {
+  font: size 83px;
+}
+.myclass {
+  font-size: 1px;
+  color: red;
+  background-color: yellow;
+}
+body {
+  background-color: red;
+}
+h1 {
+  color: #722424;
+  text-align: center;
+}
+p {
+  font-family: verdana;
+  font-size: 5px;
+}
