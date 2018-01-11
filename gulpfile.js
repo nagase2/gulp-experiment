@@ -39,7 +39,10 @@ gulp.task('browser-sync', function() {
     });
 });
 
-gulp.task('less-watch',['less'],browserSync.reload);
+gulp.task('less-watch',['less'],function(done){
+    browserSync.reload();
+    done();
+});
 //gulp.task('html-watch',['copyHTML'],browserSync.reload);
 
 gulp.task('watch',function()
@@ -49,6 +52,7 @@ gulp.task('watch',function()
             baseDir:'dist/'
         }
     });
+    gulp.watch("*.less").on("change",browserSync.reload);
     gulp.watch('src/less/*.less', ['less-watch']);
     gulp.watch('src/js/*.js', ['minify']);
     gulp.watch('src/*.html', ['copyHTML']);
