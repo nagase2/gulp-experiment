@@ -43,6 +43,12 @@ gulp.task('less-watch',['less','copyHTML'],function(done){
     browserSync.reload();
     done();
 });
+gulp.task('js-watch',['minify'],function(done){
+    browserSync.reload();
+    done();
+});
+
+gulp.task('default', ['minify','less','copyHTML'])
 //gulp.task('html-watch',['copyHTML'],browserSync.reload);
 
 gulp.task('watch',function()
@@ -55,6 +61,7 @@ gulp.task('watch',function()
     //gulp.watch("*.less").on("change",browserSync.reload);
     gulp.watch(['src/*.html','src/less/*.less'], ['less-watch']);
 
+    gulp.watch('src/js/*.js', ['js-watch']);
 
    // gulp.watch('src/less/*.less', ['less-watch']);
    // gulp.watch('src/js/*.js', ['minify']);
