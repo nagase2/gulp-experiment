@@ -10,21 +10,21 @@ var browserSync = require('browser-sync').create();
 
 // Minify JS
 gulp.task('minify',function(){
-    gulp.src('src/js/*.js')
+    gulp.src('src/main/js/*.js')
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))
   });
   
   
   gulp.task('less', function() {
-    gulp.src('src/less/*.less')
+    gulp.src('src/main/less/*.less')
     .pipe(less())
     .pipe(gulp.dest('dist/css'));
   });
 
   // copy Html
 gulp.task('copyHTML',function(){
-    gulp.src('src/*.html')
+    gulp.src('src/main/*.html')
     .pipe(gulp.dest('dist'));
     //.pipe(gulp.livereload()))
   
@@ -59,9 +59,8 @@ gulp.task('watch',function()
         }
     });
     //gulp.watch("*.less").on("change",browserSync.reload);
-    gulp.watch(['src/*.html','src/less/*.less'], ['less-watch']);
-
-    gulp.watch('src/js/*.js', ['js-watch']);
+    gulp.watch(['src/main/*.html','src/main/less/*.less'], ['main/less-watch']);
+    gulp.watch('src/main/js/*.js', ['js-watch']);
 
    // gulp.watch('src/less/*.less', ['less-watch']);
    // gulp.watch('src/js/*.js', ['minify']);
