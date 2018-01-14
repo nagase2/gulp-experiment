@@ -6,13 +6,14 @@
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    //"outFile": "dist/ts/tsc.js",
-    //"outDir": "dist/js",    
-    "sourceMap": true
+    //"outFile": "dist/js/typescripts.js",
+    "outDir": "./dist/js",    
+    "sourceMap": true,
+    "baseUrl": "."
   },
   "include": [
-    "src/main/**/*",
-    "src/test/**/*"
+    "src/**/*"
+    //,"src/test/**/*"
   ],
   "exclude": [
       "node_modules",

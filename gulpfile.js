@@ -1,4 +1,4 @@
-var gulp        = require('gulp');
+
 var gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
 const uglify = require('gulp-uglify');
@@ -10,21 +10,21 @@ var browserSync = require('browser-sync').create();
 
 // Minify JS
 gulp.task('minify',function(){
-    gulp.src('src/main/js/*.js')
+    gulp.src('src/js/*.js')
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))
   });
   
   
   gulp.task('less', function() {
-    gulp.src('src/main/less/*.less')
+    gulp.src('src/less/*.less')
     .pipe(less())
     .pipe(gulp.dest('dist/css'));
   });
 
   // copy Html
 gulp.task('copyHTML',function(){
-    gulp.src('src/main/*.html')
+    gulp.src('src/*.html')
     .pipe(gulp.dest('dist'));
     //.pipe(gulp.livereload()))
   
@@ -59,8 +59,11 @@ gulp.task('watch',function()
         }
     });
     //gulp.watch("*.less").on("change",browserSync.reload);
-    gulp.watch(['src/main/*.html','src/main/less/*.less'], ['main/less-watch']);
-    gulp.watch('src/main/js/*.js', ['js-watch']);
+    gulp.watch(['src/*.html','src/less/*.less'], ['less-watch']);
+    gulp.watch('src/js/*.js', ['js-watch']);
+
+    //ここでtypescriptのコンパイルを行う
+    
 
    // gulp.watch('src/less/*.less', ['less-watch']);
    // gulp.watch('src/js/*.js', ['minify']);
