@@ -1,22 +1,16 @@
-var gulp = require('gulp');     
-var scssPlugin = require('gulp-less');
-var connect = require('gulp-connect');
+var gulp = require('gulp');
+var tsc = require('gulp-typescript');
+var sourcemaps = require('gulp-sourcemaps');
+var merge = require('merge-stream');
 
-gulp.task('myStyles', function () {
-    gulp.src('less/*.less')
-        .pipe(scssPlugin())
-        .pipe(gulp.dest('css'))
-        .pipe(connect.reload());
+
+gulp.task('default', function () {
+  var tsProject = tsc.createProject('tsconfig.json');
+  var tsResult = gulp.src(['src/**/*.ts'])
+    .pipe(sourcemaps.init())
+    .pipe(tsProject());
+  return merge(tsResult, tsResult.js)
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('./dist/js'));
 });
 
-gulp.task('connect', function() {
-    connect.server({
-        livereload: true
-    });
-});
-
-gulp.task('watchMyStyles', function() {
-    gulp.watch('less/*.less', ['myStyles']);
-});
-
-gulp.task('default', ['watchMyStyles', 'connect']);

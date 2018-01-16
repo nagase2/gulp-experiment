@@ -2,11 +2,27 @@ var gulp        = require('gulp');
 const imagemin = require('gulp-imagemin');
 const uglify = require('gulp-uglify');
 const less = require('gulp-less');
-var typescript = require('gulp-typescript');
+
+var tsc = require('gulp-typescript');
+var sourcemaps = require('gulp-sourcemaps');
+var merge = require('merge-stream');
+
 
 var browserSync = require('browser-sync').create();
 
 
+
+gulp.task('ts', function () {
+    var tsProject = tsc.createProject('tsconfig.json');
+    var tsResult = gulp.src(['src/**/*.ts'])
+      .pipe(sourcemaps.init())
+      .pipe(tsProject());
+    return merge(tsResult, tsResult.js)
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest('./dist/js'));
+  });
+
+  
 
 // Minify JS
 gulp.task('minify',function(){
@@ -51,8 +67,12 @@ gulp.task('js-watch',['minify'],function(done){
     browserSync.reload();
     done();
 });
+gulp.task('ts-watch',['ts'],function(done){
+    browserSync.reload();
+    done();
+});
 
-gulp.task('default', ['minify','less','copyHTML'])
+gulp.task('default', ['ts','minify','less','copyHTML'])
 //gulp.task('html-watch',['copyHTML'],browserSync.reload);
 
 gulp.task('watch',function()
@@ -66,7 +86,8 @@ gulp.task('watch',function()
     
     gulp.watch(['src/less/*.less'],['less-watch']);
     gulp.watch('src/*.html',['html-watch']);
-    gulp.watch('src/js/*.js', ['js-watch']);
+    gulp.watch('src/js/**/*.js', ['js-watch']);
+    gulp.watch('src/ts/**/*.ts', ['ts-watch']);
 
    // gulp.watch('src/less/*.less', ['less-watch']);
    // gulp.watch('src/js/*.js', ['minify']);

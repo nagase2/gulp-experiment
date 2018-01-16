@@ -7,6 +7,7 @@ export class Person {
         this.id = _id;
         this.name = _name;
         this.age = 99;      
+        
     }
 }
 

@@ -20,6 +20,7 @@ describe('PersonTest',() => {
         assert.equal(person.id, 1000000);
         assert.equal(person.age,99);
         assert.equal(person.name,'hiro');
+        
     });
 });
 

@@ -6,7 +6,9 @@ $(() => {
     $('body').html('彼は' + person.name + 'です。' + 'そして' + person.age +'歳です');
 });
 
-function myfunc(str:string){
 
-    return "test value";
+
+function myfunc(str:string){
+    console.log("my func has been called");
+    return "test vassslueok";
 }
