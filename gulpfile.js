@@ -1,8 +1,8 @@
-
-var gulp = require('gulp');
+var gulp        = require('gulp');
 const imagemin = require('gulp-imagemin');
 const uglify = require('gulp-uglify');
 const less = require('gulp-less');
+var typescript = require('gulp-typescript');
 
 var browserSync = require('browser-sync').create();
 
@@ -39,7 +39,11 @@ gulp.task('browser-sync', function() {
     });
 });
 
-gulp.task('less-watch',['less','copyHTML'],function(done){
+gulp.task('less-watch',['less'],function(done){
+    browserSync.reload();
+    done();
+});
+gulp.task('html-watch',['copyHTML'],function(done){
     browserSync.reload();
     done();
 });
@@ -57,17 +61,29 @@ gulp.task('watch',function()
         server: {
             baseDir:'dist/'
         }
-    });
-    //gulp.watch("*.less").on("change",browserSync.reload);
-    gulp.watch(['src/*.html','src/less/*.less'], ['less-watch']);
-    gulp.watch('src/js/*.js', ['js-watch']);
-
-    //ここでtypescriptのコンパイルを行う
+    })
+   
     
+    gulp.watch(['src/less/*.less'],['less-watch']);
+    gulp.watch('src/*.html',['html-watch']);
+    gulp.watch('src/js/*.js', ['js-watch']);
 
    // gulp.watch('src/less/*.less', ['less-watch']);
    // gulp.watch('src/js/*.js', ['minify']);
     //gulp.watch('src/*.html', ['copyHTML']);
     //gulp.watch('src/*.html', ['html-watch']);
 
-})
+});
+
+/**
+ * 外部のサイトにbrowserSync経由でアクセスする。
+ */
+gulp.task('proxy-test',function()
+{
+    browserSync.init({
+        proxy: {
+            target: "http://172.19.6.88:8080/jast-develop",
+            ws:true
+        }
+    });
+});
