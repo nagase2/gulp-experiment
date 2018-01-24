@@ -12,6 +12,7 @@ console.log("変数:"+ (mo1.value2.val1+ mo1.value2.val2));
 mo1.sample4()
 mo2.sample5()
 
+
 //モジュールをまとめてインポートする
 
 var mob = require("./ModuleBundler")
@@ -22,5 +23,20 @@ mob.mo1.sample4()
 mob.mo2.sample5()
 
 
+// var myperson = new mob.mo2.Person.Person();
 
+// console.log(myperson)
+
+function Person (){
+
+}
+Person.prototype.basicInfo ={
+    age: 22,
+    gender: "man",
+    name : "taro"
+}
+
+var person = new Person();
+
+console.log(person.basicInfo.name)
 
