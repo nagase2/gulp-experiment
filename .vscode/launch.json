@@ -11,11 +11,17 @@
         "name": "Module sample",
         "program": "${workspaceFolder}/src/js/ModuleUser.js"
     },
+    {
+        "type": "node",
+        "request": "launch",
+        "name": "Module sample",
+        "program": "${workspaceFolder}/src/js/ModuleUser.js"
+    },
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}\\index.js",
+            "name": "Sync Sample",
+            "program": "${workspaceFolder}/src/js/SyncSample.js",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]
