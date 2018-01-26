@@ -4,16 +4,37 @@
 
 console.log("START!")
 
-function func1Promise(){
-    
+function func1Promise(msgnum,duration){
     return new Promise(function(resolve,reject){
         console.log("start of func1")
         setTimeout(function(){
            console.log("inside of func1");
-           resolve("rsov")
+           resolve("msg: ##" + msgnum)
         },1000)
     })
 }
+function func2Promise(msgnum,duration){
+    return new Promise(function(resolve,reject){
+         setTimeout(function(){
+           console.log("inside of func2")
+           resolve("msg: ##" + msgnum)
+        },duration)
+    })
+}
+function func3Promise(msgnum,duration){
+    return Promise.resolve(function(){
+         setTimeout(function(){
+           console.log("inside of func2")
+           resolve("msg: ##" + msgnum)
+        },duration)
+    })
+}
+
+Promise.all([func2Promise(1,400),func2Promise(2,3000)]).then(function(msg){
+    console.log("全部おわった："+msg[0])
+    console.log("全部おわった："+msg[1])
+})
+console.log("--------------------------------")
 
 var global = {
     val1 : "init value",
