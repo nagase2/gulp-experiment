@@ -17,15 +17,16 @@ function func2Promise(msgnum,duration){
     return new Promise(function(resolve,reject){
          setTimeout(function(){
            console.log("inside of func2")
-           resolve("msg: ##" + msgnum)
+           resolve(true)
         },duration)
     })
 }
-function func3Promise(msgnum,duration){
+
+module.exports.func3 = function func3Promise(msgnum,duration){
     return Promise.resolve(function(){
          setTimeout(function(){
            console.log("inside of func2")
-           resolve("msg: ##" + msgnum)
+           resolve(true)
         },duration)
     })
 }
