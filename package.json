@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers ts:ts-node/register test/**/*.ts"
+    "test": "jasmine"
   },
   "author": "nagase",
   "license": "ISC",
@@ -30,7 +30,9 @@
     "gulp-less": "^3.4.0",
     "gulp-typescript": "^4.0.0-alpha.1",
     "gulp-uglify": "^3.0.0",
+    "jasmine": "^2.9.0",
     "ts-loader": "^3.2.0",
+    "underscore": "^1.8.3",
     "yarn": "^1.3.2"
   }
 }
