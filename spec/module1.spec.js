@@ -56,7 +56,9 @@ describe('Zaif Manager', () => {
       } else if (a == 'companyB') {
         return 'this is company B' + b + c
       } else {
+        
         return 'this is unknown company'
+
       }
     })
     m1.getValue('companyA', 'xxxxxe', 33233) /*?*/
