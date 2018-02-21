@@ -1,7 +1,10 @@
 module.exports = function () {
   return {
     files: [
-      'lib/**/*.js'
+      'lib/**/*.js',
+      'readme.txt',
+      '**/*.json',
+      'spec/*.json'
     ],
 
     tests: [
