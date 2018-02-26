@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "commander": "^2.14.1",
+    "express": "^4.16.2",
     "gulp-less": "^3.4.0",
     "gulp-typescript": "^4.0.0-alpha.1",
     "gulp-uglify": "^3.0.0",
