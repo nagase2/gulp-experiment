@@ -1,0 +1,198 @@
+2018-03-07 18:29:35.367,ERROR,org.springframework.boot.SpringApplication,ServerService Thread Pool -- 222,,,,,Application startup failed: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basicEntityServiceFactory' defined in class path resource [jp/co/toyotsu/jast/lk/config/jpa/PersistenceServiceConfiguration.class]: Unsatisfied dependency expressed through method 'basicEntityServiceFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityInspector': FactoryBean threw exception on object creation; nested exception is org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+        at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:749)
+        at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467)
+        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+        at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+        at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+        at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+        at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+        at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:866)
+        at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+        at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+        at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762)
+        at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:372)
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+        at org.springframework.boot.web.support.SpringBootServletInitializer.run(SpringBootServletInitializer.java:151)
+        at org.springframework.boot.web.support.SpringBootServletInitializer.createRootApplicationContext(SpringBootServletInitializer.java:131)
+        at org.springframework.boot.web.support.SpringBootServletInitializer.onStartup(SpringBootServletInitializer.java:86)
+        at org.springframework.web.SpringServletContainerInitializer.onStartup(SpringServletContainerInitializer.java:169)
+        at io.undertow.servlet.core.DeploymentManagerImpl.deploy(DeploymentManagerImpl.java:184)
+        at org.wildfly.extension.undertow.deployment.UndertowDeploymentService.startContext(UndertowDeploymentService.java:100)
+        at org.wildfly.extension.undertow.deployment.UndertowDeploymentService$1.run(UndertowDeploymentService.java:82)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        at java.lang.Thread.run(Thread.java:748)
+        at org.jboss.threads.JBossThread.run(JBossThread.java:320)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityInspector': FactoryBean threw exception on object creation; nested exception is org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+        at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:175)
+        at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.getObjectFromFactoryBean(FactoryBeanRegistrySupport.java:103)
+        at org.springframework.beans.factory.support.AbstractBeanFactory.getObjectForBeanInstance(AbstractBeanFactory.java:1634)
+        at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:254)
+        at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+        at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1309)
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1275)
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1101)
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+        at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835)
+        at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
+        ... 29 more
+Caused by: org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+        at org.springframework.transaction.jta.JtaTransactionManager.doCommit(JtaTransactionManager.java:1026)
+        at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:761)
+        at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:730)
+        at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:150)
+        at jp.co.toyotsu.earth.persistence.jpa.EntityInspectorFactoryBean.getObject(EntityInspectorFactoryBean.java:26)
+        at jp.co.toyotsu.earth.persistence.jpa.EntityInspectorFactoryBean.getObject(EntityInspectorFactoryBean.java:15)
+        at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:168)
+        ... 40 more
+Caused by: javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+        at com.arjuna.ats.internal.jta.transaction.arjunacore.TransactionImple.commitAndDisassociate(TransactionImple.java:1212)
+        at com.arjuna.ats.internal.jta.transaction.arjunacore.BaseTransaction.commit(BaseTransaction.java:126)
+        at com.arjuna.ats.jbossatx.BaseTransactionManagerDelegate.commit(BaseTransactionManagerDelegate.java:89)
+        at org.jboss.tm.usertx.client.ServerVMClientUserTransaction.commit(ServerVMClientUserTransaction.java:193)
+        at org.springframework.transaction.jta.JtaTransactionManager.doCommit(JtaTransactionManager.java:1023)
+        ... 46 more
+Caused by: java.lang.Throwable: setRollbackOnly called from:
+        at com.arjuna.ats.internal.jta.transaction.arjunacore.TransactionImple.setRollbackOnly(TransactionImple.java:339)
+        at com.arjuna.ats.internal.jta.transaction.arjunacore.TransactionImple.markRollbackOnly(TransactionImple.java:1563)
+        at com.arjuna.ats.internal.jta.transaction.arjunacore.TransactionImple.enlistResource(TransactionImple.java:675)
+        at com.arjuna.ats.internal.jta.transaction.arjunacore.TransactionImple.enlistResource(TransactionImple.java:423)
+        at org.jboss.jca.core.connectionmanager.listener.TxConnectionListener$TransactionSynchronization.enlist(TxConnectionListener.java:986)
+        at org.jboss.jca.core.connectionmanager.listener.TxConnectionListener.enlist(TxConnectionListener.java:379)
+        at org.jboss.jca.core.connectionmanager.tx.TxConnectionManagerImpl.transactionStarted(TxConnectionManagerImpl.java:449)
+        at org.jboss.jca.core.connectionmanager.ccm.CachedConnectionManagerImpl.userTransactionStarted(CachedConnectionManagerImpl.java:249)
+        at org.jboss.jca.core.tx.jbossts.UserTransactionListenerImpl.userTransactionStarted(UserTransactionListenerImpl.java:52)
+        at org.jboss.tm.usertx.UserTransactionRegistry.userTransactionStarted(UserTransactionRegistry.java:119)
+        at org.jboss.tm.usertx.client.ServerVMClientUserTransaction.begin(ServerVMClientUserTransaction.java:171)
+        at org.springframework.transaction.jta.JtaTransactionManager.doJtaBegin(JtaTransactionManager.java:874)
+        at org.springframework.transaction.jta.JtaTransactionManager.doBegin(JtaTransactionManager.java:831)
+        at org.springframework.transaction.support.AbstractPlatformTransactionManager.getTransaction(AbstractPlatformTransactionManager.java:373)
+        at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:130)
+        ... 43 more
+
+2018-03-07 18:29:35.368,ERROR,org.jboss.msc.service.fail,ServerService Thread Pool -- 222,,,,,MSC000001: Failed to start service jboss.undertow.deployment.default-server.default-host./jast-ymslx: org.jboss.msc.service.StartException in service jboss.undertow.deployment.default-server.default-host./jast-ymslx: java.lang.RuntimeException: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basicEntityServiceFactory' defined in class path resource [jp/co/toyotsu/jast/lk/config/jpa/PersistenceServiceConfiguration.class]: Unsatisfied dependency expressed through method 'basicEntityServiceFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityInspector': FactoryBean threw exception on object creation; nested exception is org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+        at org.wildfly.extension.undertow.deployment.UndertowDeploymentService$1.run(UndertowDeploymentService.java:85)
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        at java.lang.Thread.run(Thread.java:748)
+        at org.jboss.threads.JBossThread.run(JBossThread.java:320)
+Caused by: java.lang.RuntimeException: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basicEntityServiceFactory' defined in class path resource [jp/co/toyotsu/jast/lk/config/jpa/PersistenceServiceConfiguration.class]: Unsatisfied dependency expressed through method 'basicEntityServiceFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityInspector': FactoryBean threw exception on object creation; nested exception is org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+        at io.undertow.servlet.core.DeploymentManagerImpl.deploy(DeploymentManagerImpl.java:231)
+        at org.wildfly.extension.undertow.deployment.UndertowDeploymentService.startContext(UndertowDeploymentService.java:100)
+        at org.wildfly.extension.undertow.deployment.UndertowDeploymentService$1.run(UndertowDeploymentService.java:82)
+        ... 6 more
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basicEntityServiceFactory' defined in class path resource [jp/co/toyotsu/jast/lk/config/jpa/PersistenceServiceConfiguration.class]: Unsatisfied dependency expressed through method 'basicEntityServiceFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityInspector': FactoryBean threw exception on object creation; nested exception is org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+        at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:749)
+        at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467)
+        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+        at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+        at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+        at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+        at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+        at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+        at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:866)
+        at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+        at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+        at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762)
+        at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:372)
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+        at org.springframework.boot.web.support.SpringBootServletInitializer.run(SpringBootServletInitializer.java:151)
+        at org.springframework.boot.web.support.SpringBootServletInitializer.createRootApplicationContext(SpringBootServletInitializer.java:131)
+        at org.springframework.boot.web.support.SpringBootServletInitializer.onStartup(SpringBootServletInitializer.java:86)
+        at org.springframework.web.SpringServletContainerInitializer.onStartup(SpringServletContainerInitializer.java:169)
+        at io.undertow.servlet.core.DeploymentManagerImpl.deploy(DeploymentManagerImpl.java:184)
+        ... 8 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityInspector': FactoryBean threw exception on object creation; nested exception is org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+        at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:175)
+        at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.getObjectFromFactoryBean(FactoryBeanRegistrySupport.java:103)
+        at org.springframework.beans.factory.support.AbstractBeanFactory.getObjectForBeanInstance(AbstractBeanFactory.java:1634)
+        at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:254)
+        at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+        at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1309)
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1275)
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1101)
+        at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+        at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835)
+        at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
+        ... 29 more
+Caused by: org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+        at org.springframework.transaction.jta.JtaTransactionManager.doCommit(JtaTransactionManager.java:1026)
+        at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:761)
+        at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:730)
+        at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:150)
+        at jp.co.toyotsu.earth.persistence.jpa.EntityInspectorFactoryBean.getObject(EntityInspectorFactoryBean.java:26)
+        at jp.co.toyotsu.earth.persistence.jpa.EntityInspectorFactoryBean.getObject(EntityInspectorFactoryBean.java:15)
+        at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:168)
+        ... 40 more
+Caused by: javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+        at com.arjuna.ats.internal.jta.transaction.arjunacore.TransactionImple.commitAndDisassociate(TransactionImple.java:1212)
+        at com.arjuna.ats.internal.jta.transaction.arjunacore.BaseTransaction.commit(BaseTransaction.java:126)
+        at com.arjuna.ats.jbossatx.BaseTransactionManagerDelegate.commit(BaseTransactionManagerDelegate.java:89)
+        at org.jboss.tm.usertx.client.ServerVMClientUserTransaction.commit(ServerVMClientUserTransaction.java:193)
+        at org.springframework.transaction.jta.JtaTransactionManager.doCommit(JtaTransactionManager.java:1023)
+        ... 46 more
+Caused by: java.lang.Throwable: setRollbackOnly called from:
+        at com.arjuna.ats.internal.jta.transaction.arjunacore.TransactionImple.setRollbackOnly(TransactionImple.java:339)
+        at com.arjuna.ats.internal.jta.transaction.arjunacore.TransactionImple.markRollbackOnly(TransactionImple.java:1563)
+        at com.arjuna.ats.internal.jta.transaction.arjunacore.TransactionImple.enlistResource(TransactionImple.java:675)
+        at com.arjuna.ats.internal.jta.transaction.arjunacore.TransactionImple.enlistResource(TransactionImple.java:423)
+        at org.jboss.jca.core.connectionmanager.listener.TxConnectionListener$TransactionSynchronization.enlist(TxConnectionListener.java:986)
+        at org.jboss.jca.core.connectionmanager.listener.TxConnectionListener.enlist(TxConnectionListener.java:379)
+        at org.jboss.jca.core.connectionmanager.tx.TxConnectionManagerImpl.transactionStarted(TxConnectionManagerImpl.java:449)
+        at org.jboss.jca.core.connectionmanager.ccm.CachedConnectionManagerImpl.userTransactionStarted(CachedConnectionManagerImpl.java:249)
+        at org.jboss.jca.core.tx.jbossts.UserTransactionListenerImpl.userTransactionStarted(UserTransactionListenerImpl.java:52)
+        at org.jboss.tm.usertx.UserTransactionRegistry.userTransactionStarted(UserTransactionRegistry.java:119)
+        at org.jboss.tm.usertx.client.ServerVMClientUserTransaction.begin(ServerVMClientUserTransaction.java:171)
+        at org.springframework.transaction.jta.JtaTransactionManager.doJtaBegin(JtaTransactionManager.java:874)
+        at org.springframework.transaction.jta.JtaTransactionManager.doBegin(JtaTransactionManager.java:831)
+        at org.springframework.transaction.support.AbstractPlatformTransactionManager.getTransaction(AbstractPlatformTransactionManager.java:373)
+        at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:130)
+        ... 43 more
+
+2018-03-07 18:29:35.371,ERROR,org.jboss.as.controller.management-operation,management-handler-thread - 17,,,,,WFLYCTL0013: 操作 ("full-replace-deployment") の失敗 - アドレス: (undefined) - 問題の詳細: {"WFLYCTL0080: サービスに問題がありました" => {"jboss.undertow.deployment.default-server.default-host./jast-ymslx" => "org.jboss.msc.service.StartException in service jboss.undertow.deployment.default-server.default-host./jast-ymslx: java.lang.RuntimeException: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basicEntityServiceFactory' defined in class path resource [jp/co/toyotsu/jast/lk/config/jpa/PersistenceServiceConfiguration.class]: Unsatisfied dependency expressed through method 'basicEntityServiceFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityInspector': FactoryBean threw exception on object creation; nested exception is org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+    Caused by: java.lang.RuntimeException: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basicEntityServiceFactory' defined in class path resource [jp/co/toyotsu/jast/lk/config/jpa/PersistenceServiceConfiguration.class]: Unsatisfied dependency expressed through method 'basicEntityServiceFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityInspector': FactoryBean threw exception on object creation; nested exception is org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+    Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basicEntityServiceFactory' defined in class path resource [jp/co/toyotsu/jast/lk/config/jpa/PersistenceServiceConfiguration.class]: Unsatisfied dependency expressed through method 'basicEntityServiceFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityInspector': FactoryBean threw exception on object creation; nested exception is org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+    Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityInspector': FactoryBean threw exception on object creation; nested exception is org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+    Caused by: org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+    Caused by: javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+    Caused by: java.lang.Throwable: setRollbackOnly called from:"}}
+2018-03-07 18:29:35.431,ERROR,org.jboss.as.server,management-handler-thread - 17,,,,,WFLYSRV0014: 失敗メッセージ 
+{"WFLYCTL0080: サービスに問題がありました" => {"jboss.undertow.deployment.default-server.default-host./jast-ymslx" => "org.jboss.msc.service.StartException in service jboss.undertow.deployment.default-server.default-host./jast-ymslx: java.lang.RuntimeException: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basicEntityServiceFactory' defined in class path resource [jp/co/toyotsu/jast/lk/config/jpa/PersistenceServiceConfiguration.class]: Unsatisfied dependency expressed through method 'basicEntityServiceFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityInspector': FactoryBean threw exception on object creation; nested exception is org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+    Caused by: java.lang.RuntimeException: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basicEntityServiceFactory' defined in class path resource [jp/co/toyotsu/jast/lk/config/jpa/PersistenceServiceConfiguration.class]: Unsatisfied dependency expressed through method 'basicEntityServiceFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityInspector': FactoryBean threw exception on object creation; nested exception is org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+    Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'basicEntityServiceFactory' defined in class path resource [jp/co/toyotsu/jast/lk/config/jpa/PersistenceServiceConfiguration.class]: Unsatisfied dependency expressed through method 'basicEntityServiceFactory' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityInspector': FactoryBean threw exception on object creation; nested exception is org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+    Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityInspector': FactoryBean threw exception on object creation; nested exception is org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+    Caused by: org.springframework.transaction.UnexpectedRollbackException: JTA transaction unexpectedly rolled back (maybe due to a timeout); nested exception is javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+    Caused by: javax.transaction.RollbackException: ARJUNA016053: Could not commit transaction.
+    Caused by: java.lang.Throwable: setRollbackOnly called from:"}} とともに、デプロイメント "jast-ymslx.war" のデプロイメント "jast-ymslx.war" での置き換えはロールバックされました。
+2018-03-07 18:29:39.264,DEBUG,jp.co.toyotsu.earth.web.ProfileLookupServletInitializer,ServerService Thread Pool -- 253,,,,,プロファイルを利用: development
+2018-03-07 18:29:39.773,ERROR,stderr,ServerService Thread Pool -- 253,,,,,Handler java.util.logging.ConsoleHandler is not defined
+2018-03-07 18:30:21.341,DEBUG,jp.co.toyotsu.earth.web.i18n.preference.LocaleSynchronizer,default task-320,172.19.3.113,unknown,--,,LocaleResolver から取得したデフォルトのロカール情報: ja_JP / Asia/Tokyo
+2018-03-07 18:30:21.341,DEBUG,jp.co.toyotsu.earth.web.i18n.ResourcePathCldrLocaleNameGenerator,default task-320,172.19.3.113,unknown,--,,lookup: /META-INF/resources/webjars/earth/cldr-data/main/ja-JP/languages.json
+2018-03-07 18:30:21.341,DEBUG,jp.co.toyotsu.earth.web.i18n.ResourcePathCldrLocaleNameGenerator,default task-320,172.19.3.113,unknown,--,,lookup: /META-INF/resources/webjars/earth/cldr-data/main/ja/languages.json
+2018-03-07 18:30:21.341,DEBUG,jp.co.toyotsu.earth.web.i18n.preference.LocaleSynchronizeInterceptor,default task-320,172.19.3.113,unknown,--,,デフォルトのロカール情報を設定 (/jast-sr/login)
+
+---------------------バッチログ----------------------------------------
+
+2018-03-01 15:09:14.622  INFO 52865 --- [           main] o.s.b.c.l.support.SimpleJobLauncher      : Job: [jp.co.toyotsu.earth.batch.security.AuditableJobWrapper@1e21a7bf] completed with the following parameters: [{bankCd=0005, Djava.net.preferIPv4Stack=true, inputFile=/jast/lj/data/lj03/S500/batch/DV24X1ZW, Dspring.profiles.active=development, recoveryDt=, recoveryTimes=, Dspring.batch.job.names=LJ03B5013, corpCd=S500, _executeTimestamp=1519884552728}] and the following status: [COMPLETED]
+2018-03-01 15:09:14.624  INFO 52865 --- [           main] j.c.t.jast.lj.JastBatchApplication       : Started JastBatchApplication in 195.582 seconds (JVM running for 196.395)
+2018-03-01 15:09:14.633  INFO 52865 --- [           main] j.c.t.e.b.c.DefaultJobExecutionLogger    : ジョブ 'LJ03B5013' (実行 ID: 1655) は終了コー
+ド 0 (bs: COMPLETED / ec: COMPLETED) で終了しました 
+begin: 2018-03-01T15:09:12.925
+end: 2018-03-01T15:09:14.62
+LJ03B5013 (COMPLETED): read: 15 / write: 15 / filtered 0 / readSkip: 0 / processSkip: 0, writeSkip: 0
+2018-03-01 15:09:14.633  INFO 52865 --- [           main] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@6babf3bf: startup date [Thu Mar 01 15:06:00 JST 2018]; root of context hierarchy
+2018-03-01 15:09:14.639  INFO 52865 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2018-03-01 15:09:14.879  INFO 52865 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'jast'
