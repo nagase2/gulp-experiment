@@ -16,7 +16,7 @@ describe('自動テストサンプル', () => {
     const url = process.env.URL || 'https://news.ycombinator.com/';
 
     const browser = await puppeteer.launch({
-      headless: false,
+      headless: true,
       // See flags at https://peter.sh/experiments/chromium-command-line-switches/.
       args: [
        // '--disable-infobars', // Removes the butter bar.
@@ -32,10 +32,9 @@ describe('自動テストサンプル', () => {
     await page.goto(url);
     //await page.evaluate('document.documentElement.webkitRequestFullscreen()');
 
-    await page.waitFor(3000);
+    await page.waitFor(1000);
     await page.once('load', () => console.log('Page loaded!'));
     await page.screenshot({path: './screenshot.png'});
-  
 
     console.log(page.getValue)
 
@@ -43,10 +42,10 @@ describe('自動テストサンプル', () => {
   })
 
   it('pupeteer2', async () => {
-
+    console.log("テスト開始します")
     const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({
-      headless: false,
+      headless: true,
       args: [
         // '--disable-infobars', // Removes the butter bar.
         // '--start-maximized',
@@ -58,15 +57,20 @@ describe('自動テストサンプル', () => {
     const page = await browser.newPage();
     await page.setViewport({ width: 1920, height: 1080 });
     await page.goto('http://www.yahoo.co.jp');
+    await page.waitFor(3000);
     
-    await page.waitFor(2000);
+    await page.evaluate(() => console.log('hello', 5, {foo: 'bar'}));
+
+    await page.screenshot({ path: './example.png' });
+
+    const searchValue = await page.$eval('#header');
+    console.log("★" + searchValue);
+    
+
     await page.on('console', msg => {
       for (let i = 0; i < msg.args().length; ++i)
       console.log(`${i}: ${msg.args()[i]}`);
     });
-    await page.evaluate(() => console.log('hello', 5, {foo: 'bar'}));
-
-    await page.screenshot({ path: './example.png' });
     await browser.close();
   }
 )  
