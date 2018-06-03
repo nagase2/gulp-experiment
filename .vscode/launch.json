@@ -17,6 +17,18 @@
         "name": "Module sample",
         "program": "${workspaceFolder}/src/js/ModuleUser.js"
     },
+    { 
+        "type": "node", 
+        "request": "launch", 
+        "name": "Jasmine Individual Test", 
+        "program": "${workspaceFolder}/node_modules/jasmine/bin/jasmine.js", 
+        "args": [ 
+            "spec/pupeteerSample.spec.js" 
+        ], 
+        "env": { 
+            "NODE_PATH": "." 
+        } 
+   },
         {
             "type": "node",
             "request": "launch",

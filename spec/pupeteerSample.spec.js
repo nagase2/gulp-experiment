@@ -63,14 +63,14 @@ describe('自動テストサンプル', () => {
 
     await page.screenshot({ path: './example.png' });
 
-    const searchValue = await page.$eval('#header');
-    console.log("★" + searchValue);
+    // const searchValue = await page.$eval('#header');
+    console.log("★");
     
 
-    await page.on('console', msg => {
-      for (let i = 0; i < msg.args().length; ++i)
-      console.log(`${i}: ${msg.args()[i]}`);
-    });
+    // await page.on('console', msg => {
+    //   for (let i = 0; i < msg.args().length; ++i)
+    //   console.log(`${i}: ${msg.args()[i]}`);
+    // });
     await browser.close();
   }
 )  
