@@ -11,7 +11,7 @@ function timer(){
     return new Promise(function(resolve,reject){
         console.log("start of func1")
         setTimeout(function(){
-           setTimeout(func1,3000)
+           setTimeout(timer,3000)
             console.log("complete")
            resolve("msg:")
            
