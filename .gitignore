@@ -2,3 +2,5 @@ node_modules/
 package-lock.json
 dist
 build
+jast*
+spec/puppeteer/jast-test-sample.spec.js
