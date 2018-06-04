@@ -6,7 +6,6 @@ var fs = require('fs');
 
 'use strict'
 
-var mo1 = require('../lib/module1');
 
 describe('自動テストサンプル', () => {
   jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000
@@ -34,7 +33,7 @@ describe('自動テストサンプル', () => {
 
     await page.waitFor(1000);
     await page.once('load', () => console.log('Page loaded!'));
-    await page.screenshot({path: './screenshot.png'});
+    await page.screenshot({path: './screenshot3.png'});
 
     console.log(page.getValue)
 
@@ -61,7 +60,7 @@ describe('自動テストサンプル', () => {
     
     await page.evaluate(() => console.log('hello', 5, {foo: 'bar'}));
 
-    await page.screenshot({ path: './example.png' });
+    await page.screenshot({ path: './yahoo.png' });
 
     // const searchValue = await page.$eval('#header');
     console.log("★");
