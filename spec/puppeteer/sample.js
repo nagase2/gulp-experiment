@@ -31,13 +31,9 @@ describe('自動テストサンプル', () => {
     const page = await browser.newPage();
     try{
 
-
-    
-
     // const cookies = await page.cookies();
    //  await page.deleteCookie(cookies[0])
     
-
     await page.setViewport({ width: 1920, height: 1080 });
     await page.goto(url,{waitUntil: "domcontentloaded"});
     //await page.evaluate('document.documentElement.webkitRequestFullscreen()');
@@ -49,12 +45,11 @@ describe('自動テストサンプル', () => {
     await page.type('input[name="username"]', "jc580");
     await page.type('input[name="password"]', "jc580");
   
-
     await page.click('#submit-button')
     //await page.waitForSelector('#feature-content')
   
     //ＪＡＳＴサンプルトップをクリック
-    await page.waitFor('#ui-id-3', {timeout: 5000});
+    await page.waitFor('#ui-id-3', {timeout: 10000});
     await page.click('#ui-id-3')
     await page.waitFor(500);
     await page.waitFor('#j2_1_anchor', {timeout: 5000});
@@ -74,7 +69,7 @@ describe('自動テストサンプル', () => {
 
     await page.focus('#crncyCd');
     await page.waitFor(500);
-    await page.type('#crncyCd','USD')
+    await page.type('#crncyCd','EUR')
     await page.waitFor(500);
     //検索ボタン
     await page.click('#f5');
@@ -85,13 +80,10 @@ describe('自動テストサンプル', () => {
     // await page.waitFor('body > div.l-container > div > div > article > header > h1',{timeout: 120000})
     //body > div.l-container > div > div > article > header > h1
 
-
     //画面上の値を確認して、assertionを行う。
-
    
     // await page.waitForNavigation({timeout: 60000, waitUntil: "domcontentloaded"});
-    
-    
+        
     await page.waitFor(2000);
     
     //networkidle0 
