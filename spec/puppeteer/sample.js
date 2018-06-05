@@ -15,7 +15,7 @@ describe('自動テストサンプル', () => {
     const url = process.env.URL || 'http://172.19.6.88:8080/jast-sample-develop/login';
 
     const browser = await puppeteer.launch({
-      headless: false,
+      headless: true,
       // See flags at https://peter.sh/experiments/chromium-command-line-switches/.
       args: [
        // '--disable-infobars', // Removes the butter bar.
@@ -70,7 +70,6 @@ describe('自動テストサンプル', () => {
     console.log("リンクをクリックしました。")
     await page.waitFor('#crncyCd', {timeout: 120000});
    
-
     console.log("入力します")
 
     await page.focus('#crncyCd');
@@ -97,8 +96,12 @@ describe('自動テストサンプル', () => {
     
     //networkidle0 
     //load 
-    //await page.screenshot({path: 'jast.png',fullPage:true});
+    // await page.screenshot({path: 'jast.png',fullPage:true});
 
+    const buffer = await page.screenshot({type: 'png'});
+	console.log('length:', buffer.length);
+  await fs.writeFile('output.png', buffer);
+  
     // j_username
     // j_password
   }finally{

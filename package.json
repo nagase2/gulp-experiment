@@ -34,6 +34,7 @@
     "gulp-uglify": "^3.0.0",
     "jasmine": "^2.99.0",
     "json2csv": "^4.0.0",
+    "mime-types": "^2.1.18",
     "puppeteer": "^1.4.0",
     "request": "^2.83.0",
     "ts-loader": "^3.2.0",
