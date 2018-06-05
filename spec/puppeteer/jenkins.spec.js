@@ -23,6 +23,7 @@ describe('自動テストサンプル', () => {
         // '--start-fullscreen',
          //'--window-size=1920,1080',
         // '--kiosk',
+        '--no-sandbox'
       ],
     });
 

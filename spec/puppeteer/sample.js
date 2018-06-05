@@ -23,12 +23,16 @@ describe('自動テストサンプル', () => {
         // '--start-fullscreen',
          '--window-size=1920,1080',
         // '--kiosk',
-        // '--no-sandbox',
-        // '--disable-setuid-sandbox'
+         '--no-sandbox',
+         '--disable-setuid-sandbox'
       ],
     });
 
     const page = await browser.newPage();
+    try{
+
+
+    
 
     // const cookies = await page.cookies();
    //  await page.deleteCookie(cookies[0])
@@ -40,24 +44,23 @@ describe('自動テストサンプル', () => {
 
     //await page.waitFor(1000);
     await page.once('load', () => console.log('Page loaded!'));
+    await page.goto(url,{waitUntil: "domcontentloaded"});
 
     await page.type('input[name="username"]', "jc580");
     await page.type('input[name="password"]', "jc580");
   
 
-
-   
     await page.click('#submit-button')
     //await page.waitForSelector('#feature-content')
   
     //ＪＡＳＴサンプルトップをクリック
-    await page.waitFor('#ui-id-3', {timeout: 120000});
+    await page.waitFor('#ui-id-3', {timeout: 5000});
     await page.click('#ui-id-3')
     await page.waitFor(500);
-    await page.waitFor('#j2_1_anchor', {timeout: 120000});
+    await page.waitFor('#j2_1_anchor', {timeout: 5000});
     await page.click('#j2_1_anchor')
     await page.waitFor(500);
-    await page.waitFor('#j2_2_anchor', {timeout: 120000});
+    await page.waitFor('#j2_2_anchor', {timeout: 5000});
     await page.click('#j2_2_anchor')
     console.log("j2-2 anchor ")
     await page.waitFor(500);
@@ -66,11 +69,12 @@ describe('自動テストサンプル', () => {
     //await page.click('a[href="/jast-sample-develop/xx/basicsample/crncymanagement/?doInitSearch=false"]')
     console.log("リンクをクリックしました。")
     await page.waitFor('#crncyCd', {timeout: 120000});
-    await page.waitFor(500);
+   
 
     console.log("入力します")
 
     await page.focus('#crncyCd');
+    await page.waitFor(500);
     await page.type('#crncyCd','USD')
     await page.waitFor(500);
     //検索ボタン
@@ -89,18 +93,22 @@ describe('自動テストサンプル', () => {
     // await page.waitForNavigation({timeout: 60000, waitUntil: "domcontentloaded"});
     
     
-    await page.waitFor(3000);
+    await page.waitFor(2000);
     
     //networkidle0 
     //load 
-    await page.screenshot({path: './jast.png',fullPage:true});
+    //await page.screenshot({path: 'jast.png',fullPage:true});
 
     // j_username
     // j_password
-
+  }finally{
+    console.log("ブラウザクローズします")
     //console.log(page.getValue)
-    await page.deleteCookie(cookies[0])
+    //await page.deleteCookie(cookies[0])
     await browser.close();
+
+  }
+   
   })
 
 
