@@ -38,9 +38,10 @@ describe('自動テストサンプル', () => {
     await page.goto(url,{waitUntil: "domcontentloaded"});
     //await page.evaluate('document.documentElement.webkitRequestFullscreen()');
 
-    //await page.waitFor(1000);
+   
     await page.once('load', () => console.log('Page loaded!'));
     await page.goto(url,{waitUntil: "domcontentloaded"});
+    await page.waitFor(1000);
 
     await page.type('input[name="username"]', "jc580");
     await page.type('input[name="password"]', "jc580");
@@ -74,17 +75,14 @@ describe('自動テストサンプル', () => {
     //検索ボタン
     await page.click('#f5');
 
-    
     //await page.goto('http://172.19.6.88:8080/jast-sample-develop/xx/basicsample/crncymanagement/');
-   
     // await page.waitFor('body > div.l-container > div > div > article > header > h1',{timeout: 120000})
     //body > div.l-container > div > div > article > header > h1
-
     //画面上の値を確認して、assertionを行う。
-   
+  
     // await page.waitForNavigation({timeout: 60000, waitUntil: "domcontentloaded"});
         
-    await page.waitFor(2000);
+    await page.waitFor(1000);
     
     //networkidle0 
     //load 
