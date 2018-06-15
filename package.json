@@ -1,44 +1,43 @@
 {
-  "name": "glup-experiment",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "jasmine"
-  },
-  "author": "nagase",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/jquery": "^3.2.17",
-    "@types/mocha": "^2.2.46",
-    "@types/power-assert": "^1.4.29",
-    "browser-sync": "^2.23.5",
-    "gulp": "^3.9.1",
-    "gulp-connect": "^2.2.0",
-    "gulp-imagemin": "^4.1.0",
-    "gulp-livereload": "^3.8.1",
-    "istanbul": "^0.4.5",
-    "jquery": "^3.2.1",
-    "mocha": "^4.1.0",
-    "power-assert": "^1.4.4",
-    "ts-node": "^4.1.0",
-    "typescript": "^2.6.2",
-    "typings": "^2.1.1",
-    "webpack": "^3.10.0"
-  },
-  "dependencies": {
-    "commander": "^2.14.1",
-    "express": "^4.16.2",
-    "gulp-less": "^3.4.0",
-    "gulp-typescript": "^4.0.0-alpha.1",
-    "gulp-uglify": "^3.0.0",
-    "jasmine": "^2.99.0",
-    "json2csv": "^4.0.0",
-    "mime-types": "^2.1.18",
-    "puppeteer": "^1.4.0",
-    "request": "^2.83.0",
-    "ts-loader": "^3.2.0",
-    "underscore": "^1.8.3",
-    "yarn": "^1.7.0"
-  }
+	"name": "glup-experiment",
+	"version": "0.0.1",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "jasmine"
+	},
+	"author": "nagase",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/jquery": "^3.2.17",
+		"@types/mocha": "^2.2.46",
+		"@types/power-assert": "^1.4.29",
+		"browser-sync": "^2.23.5",
+		"gulp": "^3.9.1",
+		"gulp-connect": "^2.2.0",
+		"gulp-imagemin": "^4.1.0",
+		"gulp-livereload": "^3.8.1",
+		"istanbul": "^0.4.5",
+		"mocha": "^4.1.0",
+		"power-assert": "^1.4.4",
+		"ts-node": "^4.1.0",
+		"typescript": "^2.6.2",
+		"typings": "^2.1.1",
+		"webpack": "^3.10.0"
+	},
+	"dependencies": {
+		"express": "^4.16.2",
+		"@types/json2csv": "^4.0.0",
+		"puppeteer": "^1.4.0",
+		"request": "^2.83.0",
+		"@types/underscore": "^1.8.8",
+		"commander": "^2.14.1",
+		"gulp-less": "^3.4.0",
+		"gulp-typescript": "^4.0.0-alpha.1",
+		"gulp-uglify": "^3.0.0",
+		"jasmine": "^3.1.0",
+		"mime-types": "^2.1.18",
+		"ts-loader": "^3.2.0",
+		"yarn": "^1.7.0"
+	}
 }
