@@ -2,7 +2,8 @@ import _ = require("underscore")
 
 import fs = require('fs')
 import uuidv1 = require("uuid/v1")
-import ShortUniqueId = require("short-unique-id")
+//import ShortUniqueId = require("short-unique-id")
+import * as ShortUniqueId from 'short-unique-id';
 import "jasmine"
 
 

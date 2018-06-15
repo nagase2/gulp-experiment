@@ -3,7 +3,7 @@ const imagemin = require('gulp-imagemin');
 const uglify = require('gulp-uglify');
 const less = require('gulp-less');
 
-var tsc = require('gulp-typescript');
+
 var sourcemaps = require('gulp-sourcemaps');
 var merge = require('merge-stream');
 
@@ -12,24 +12,32 @@ var browserSync = require('browser-sync').create();
 
 
 
-gulp.task('ts', function () {
-    var tsProject = tsc.createProject('tsconfig.json');
-    var tsResult = gulp.src(['src/**/*.ts'])
-      .pipe(sourcemaps.init())
-      .pipe(tsProject());
-    return merge(tsResult, tsResult.js)
-      .pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest('./dist/js'));
-  });
+// gulp.task('ts', function () {
+//     var tsProject = tsc.createProject('tsconfig.json');
+//     var tsResult = gulp.src(['src/**/*.ts'])
+//       .pipe(sourcemaps.init())
+//       .pipe(tsProject());
+//     return merge(tsResult, tsResult.js)
+//       .pipe(sourcemaps.write('.'))
+//       .pipe(gulp.dest('./dist/js'));
+//   });
+var ts = require("gulp-typescript");
+var tsProject = ts.createProject("tsconfig.json");
+
+gulp.task("ts", function () {
+    return tsProject.src()
+        .pipe(tsProject());
+      
+});
 
   
 
-// Minify JS
-gulp.task('minify',function(){
-    gulp.src('src/js/*.js')
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/js'))
-  });
+// // Minify JS
+// gulp.task('minify',function(){
+//     gulp.src('src/js/*.js')
+//     .pipe(uglify())
+//     .pipe(gulp.dest('dist/js'))
+//   });
   
   
   gulp.task('less', function() {
@@ -63,16 +71,16 @@ gulp.task('html-watch',['copyHTML'],function(done){
     browserSync.reload();
     done();
 });
-gulp.task('js-watch',['minify'],function(done){
-    browserSync.reload();
-    done();
-});
+// gulp.task('js-watch',['minify'],function(done){
+//     browserSync.reload();
+//     done();
+// });
 gulp.task('ts-watch',['ts'],function(done){
     browserSync.reload();
     done();
 });
 
-gulp.task('default', ['ts','minify','less','copyHTML'])
+gulp.task('default', ['ts','less','copyHTML'])
 //gulp.task('html-watch',['copyHTML'],browserSync.reload);
 
 gulp.task('watch',function()
