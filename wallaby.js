@@ -1,20 +1,21 @@
-module.exports = function () {
-  return {
-    files: [
+module.exports = function() {
+	return {
+		files: [
       'lib/**/*.js',
       'readme.txt',
       '**/*.json',
-      'spec/*.json'
+      'spec/*.json',
+      'src/**/*.ts'
     ],
 
-    tests: [
+		tests: [
       'spec/**/*.spec.js'
     ],
 
-    env: {
-      type: 'node'
-    },
+		env: {
+			type: 'node'
+		},
 
-    testFramework: 'jasmine'
-  };
+		testFramework: 'jasmine'
+	};
 };

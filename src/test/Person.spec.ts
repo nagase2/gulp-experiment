@@ -1,6 +1,7 @@
 
 import * as assert from 'power-assert'
-import { Person } from '../src/js/Person';
+import { Person } from '../js/Person';
+
 
 describe('PersonTest', () => {
     it('コンストラクタのテストです', () => {
