@@ -42,24 +42,24 @@ describe('自動テストサンプル', () => {
     await page.once('load', () => console.log('Page loaded!'));
     await page.goto(url,{waitUntil: "domcontentloaded"});
     await page.waitFor(1000);
-
+    //ログインフォームにIDとパスワードをセット
     await page.type('input[name="username"]', "jc580");
     await page.type('input[name="password"]', "jc580");
-  
+    //ログインボタンクリック
     await page.click('#submit-button')
     //await page.waitForSelector('#feature-content')
   
-    //ＪＡＳＴサンプルトップをクリック
+    //メニューが表示されるまで待機する。
     await page.waitFor('#ui-id-3', {timeout: 10000});
-    await page.click('#ui-id-3')
-    await page.waitFor(500);
+    await page.click('#ui-id-3')  //メニューをクリック
+    await page.waitFor(100);
     await page.waitFor('#j2_1_anchor', {timeout: 5000});
     await page.click('#j2_1_anchor')
-    await page.waitFor(500);
+    await page.waitFor(100);
     await page.waitFor('#j2_2_anchor', {timeout: 5000});
     await page.click('#j2_2_anchor')
     console.log("j2-2 anchor ")
-    await page.waitFor(500);
+    await page.waitFor(100);
     await page.waitFor('#j2_3_anchor', {timeout: 120000});
     await page.click('#j2_3_anchor');
     //await page.click('a[href="/jast-sample-develop/xx/basicsample/crncymanagement/?doInitSearch=false"]')
@@ -69,9 +69,10 @@ describe('自動テストサンプル', () => {
     console.log("入力します")
 
     await page.focus('#crncyCd');
-    await page.waitFor(500);
+    await page.waitFor(300);
+    //検索フィールドに通貨コードを入力する。  
     await page.type('#crncyCd','EUR')
-    await page.waitFor(500);
+    await page.waitFor(100);
     //検索ボタン
     await page.click('#f5');
 
@@ -90,7 +91,7 @@ describe('自動テストサンプル', () => {
 
     const buffer = await page.screenshot({type: 'png'});
 	console.log('length:', buffer.length);
-  await fs.writeFile('output.png', buffer);
+  await fs.writeFile('output2.png', buffer);
   
     // j_username
     // j_password
