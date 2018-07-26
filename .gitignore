@@ -4,3 +4,5 @@ dist
 build
 jast*
 spec/puppeteer/jast-test-sample.spec.js
+spec/puppeteer/*.png
+
